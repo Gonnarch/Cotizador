@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Cotizador OCR</title>
+</head>
+<body>
+
+<h1>Subir lista escolar</h1>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Procesar</button>
+</form>
+
+<hr>
+
+{% if texto %}
+<h3>Texto OCR:</h3>
+<pre>{{ texto }}</pre>
+{% endif %}
+
+<hr>
+
+{% if productos %}
+<h2>Productos detectados:</h2>
+
+<table border="1">
+<tr>
+    <th>Cantidad</th>
+    <th>Producto</th>
+</tr>
+
+{% for p in productos %}
+<tr>
+    <td>{{ p.cantidad }}</td>
+    <td>{{ p.nombre }}</td>
+</tr>
+{% endfor %}
+</table>
+{% endif %}
+
+<hr>
+
+{% if resultado %}
+<h2>Presupuesto</h2>
+
+<table border="1">
+<tr>
+    <th>Producto</th>
+    <th>Cantidad</th>
+    <th>Precio</th>
+    <th>Subtotal</th>
+</tr>
+
+{% for r in resultado %}
+<tr>
+    <td>{{ r.nombre }}</td>
+    <td>{{ r.cantidad }}</td>
+    <td>{{ r.precio }}</td>
+    <td>{{ r.subtotal }}</td>
+</tr>
+{% endfor %}
+</table>
+
+<h3>Total: S/ {{ total }}</h3>
+{% endif %}
+
+</body>
+</html>
