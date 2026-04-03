@@ -43,18 +43,3 @@ Incluye un sistema de administración, formulario interactivo y visualización d
 
 ---
 
-## 📂 Estructura del Proyecto
-
-presupuesto_escolar/
-│
-├── config/ # Configuración del proyecto
-├── cotizador/ # App principal
-│ ├── models.py
-│ ├── views.py
-│ ├── forms.py
-│ ├── urls.py
-│ └── templates/
-│
-├── db.sqlite3
-├── manage.py
-└── README.md
