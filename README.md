@@ -8,38 +8,36 @@
 
 ## 📌 Descripción
 
-Aplicación web desarrollada con Django que permite realizar cotizaciones escolares de manera rápida y sencilla.  
-Incluye un sistema de administración, formulario interactivo y visualización de resultados.
+Aplicación web Django para cotizar listas escolares desde imágenes.
+El flujo combina OCR con Tesseract + parser local avanzado y, opcionalmente, parser con **API de OpenAI**.
 
 ---
 
-## 🎯 Objetivos del Proyecto
+## ✨ Flujo OCR + OpenAI
 
-- Aplicar el patrón MVT de Django
-- Implementar formularios dinámicos
-- Gestionar datos mediante el panel admin
-- Mostrar resultados en el frontend
-
----
-
-## 🖥️ Vistas del Sistema
-
-### 🏠 Página Principal
-![Principal](docs/principal.png)
+1. Subes una imagen con la lista escolar.
+2. Tesseract extrae el texto OCR.
+3. El parser local avanzado procesa columnas, ruido y abreviaturas.
+4. Si activas `usar_ia`, el texto OCR se envía al API de OpenAI para estructurar JSON.
+5. Si OpenAI falla, se usa fallback automático al parser OCR local.
 
 ---
 
-### 🔐 Panel de Administración
-![Admin](docs/admin.png)
+## 🎨 Interfaz Bootstrap
+
+La pantalla principal usa Bootstrap 5:
+- Card principal.
+- Formulario estilizado.
+- Tablas responsivas para productos y presupuesto.
+- Badges/alerts para motor de extracción y mensajes de fallback.
 
 ---
 
-## ⚙️ Tecnologías Utilizadas
+## ⚙️ Variables de Entorno
 
-- 🐍 Python 3
-- 🌐 Django 6
-- 🗄️ SQLite
-- 🎨 HTML (Templates Django)
-
----
-
+```bash
+USE_AI_PARSER=true
+OPENAI_API_KEY=tu_api_key
+OPENAI_MODEL=gpt-4o-mini
+OPENAI_API_URL=https://api.openai.com/v1/chat/completions
+TESSERACT_CMD=/usr/bin/tesseract

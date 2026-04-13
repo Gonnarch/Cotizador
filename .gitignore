@@ -1,13 +1,6 @@
-# Python
+.env
+venv/
 __pycache__/
 *.pyc
-
-# Django
 db.sqlite3
-
-# Entorno virtual
-venv/
-.env
-
-# Otros
-.DS_Store
+media/
